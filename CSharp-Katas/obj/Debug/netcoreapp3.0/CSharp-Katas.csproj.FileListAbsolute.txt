@@ -1,0 +1,12 @@
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.csprojAssemblyReference.cache
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.csproj.CoreCompileInputs.cache
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.AssemblyInfoInputs.cache
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.AssemblyInfo.cs
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\bin\Debug\netcoreapp3.0\CSharp-Katas.exe
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\bin\Debug\netcoreapp3.0\CSharp-Katas.deps.json
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\bin\Debug\netcoreapp3.0\CSharp-Katas.runtimeconfig.json
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\bin\Debug\netcoreapp3.0\CSharp-Katas.runtimeconfig.dev.json
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\bin\Debug\netcoreapp3.0\CSharp-Katas.dll
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\bin\Debug\netcoreapp3.0\CSharp-Katas.pdb
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.dll
+W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.pdb
