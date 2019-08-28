@@ -1,148 +1,95 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Runtime.Serialization;
 using System.Text;
 
 namespace CSharp_Katas
 {
-	public class Program
+	public static class Program
 	{
 		static void Main(string[] args)
 		{
-
-			Console.WriteLine(HumanTimeFormat.formatDuration(1));
-			
+			Console.WriteLine();
 		}
-
-		
+				
 	}
 	
 	public static class HumanTimeFormat
 	{
-		public static string formatDuration(int seconds)
+		public static string FormatDuration(int seconds)
 		{
-			int yearsCount = 0;
-			int daysCount = 0;
-			int hrsCount = 0;
-			int minsCount = 0;
-			int oneMinute = 60;
-			var humanDateBuilder = new StringBuilder();
 
-			if( seconds > 0)
+			StringBuilder humanTime = new StringBuilder();
+			TimeSpan time = TimeSpan.FromSeconds(seconds);
+
+			if(time.TotalSeconds == 0)
 			{
-				if (seconds < oneMinute)
+				humanTime.Append("now");
+			}
+
+			if(time.Days != 0)
+			{
+				if (time.TotalDays >= 365)
 				{
-					humanDateBuilder.Append(Humanize(seconds, "second"));
+					int years = (int)time.TotalDays / 365;
+					humanTime.AppendFormat("{0} {1}", years, Pluralize("year", years));
+					if (time.Days > 0 || time.Hours > 0 || time.Minutes > 0 || time.Seconds > 0)
+					{
+						humanTime.Append(", ");
+					}
+
+					humanTime.AppendFormat("{0} {1}", time.Days - (years * 365), Pluralize("day", time.Days));
+					if (time.Hours > 0 || time.Minutes > 0 || time.Seconds > 0)
+					{
+						humanTime.Append(", ");
+					}
 				}
 				else
-				{ 
-					while (seconds >= oneMinute)
+				{
+					humanTime.AppendFormat("{0} {1}", time.Days, Pluralize("day", time.Days));
+					if (time.Hours > 0 || time.Minutes > 0 || time.Seconds > 0)
 					{
-						seconds -= oneMinute;
-						if(minsCount == 59)
-						{
-							if (hrsCount == 23)
-							{
-								if(daysCount == 364)
-								{
-									yearsCount++;
-									daysCount = 0;
-								}
-								else { daysCount++; }
-								hrsCount = 0;
-							}
-							else { hrsCount++; }
-							minsCount = 0;
-						}
-						else { minsCount++; }
-					}
-
-					string yearsText = Humanize(yearsCount, "year");
-					string daysText = Humanize(daysCount, "day");
-					string hoursText = Humanize(hrsCount, "hour");
-					string minsText = Humanize(minsCount, "minute");
-					string secsText = Humanize(seconds, "second");
-					int[] values = { yearsCount, daysCount, hrsCount, minsCount };
-
-
-									   
-					if (!string.IsNullOrEmpty(yearsText) && seconds == 0)
-					{
-						humanDateBuilder.Append(yearsText + ", ");
-					}
-					else
-					{
-						humanDateBuilder.Append(yearsText);
-					}
-
-					if(!string.IsNullOrEmpty(daysText) && seconds == 0)
-					{
-						humanDateBuilder.Append(daysText + ", ");
-					}
-					else
-					{
-						humanDateBuilder.Append(daysText);
-					}
-
-					if (!string.IsNullOrEmpty(hoursText) && seconds == 0)
-					{
-						humanDateBuilder.Append(hoursText + ", ");
-					}
-					else
-					{
-						humanDateBuilder.Append(hoursText);
-					}
-
-					if (!string.IsNullOrEmpty(minsText) && values.Sum() > 0)
-					{
-						humanDateBuilder.Append(minsText + ", ");
-					}
-					else
-					{
-						humanDateBuilder.Append(minsText);
-					}
-
-					if (!string.IsNullOrEmpty(secsText) && values.Sum() > 0)
-					{
-						humanDateBuilder.Append(" and " + secsText);
-					}
-					else
-					{
-						humanDateBuilder.Append(secsText);
+						humanTime.Append(", ");
 					}
 				}
+				
 			}
-			else
-			{
-				humanDateBuilder.Append("now");
-			}
-			return humanDateBuilder.ToString();
-		}
 
-		
+			if(time.Hours != 0)
+			{
+				humanTime.AppendFormat("{0} {1}", time.Hours, Pluralize("hour", time.Hours));
+				if (time.Minutes > 0 && time.Seconds == 0)
+				{
+					humanTime.Append(" and ");
+				}
+				
+				if(time.Minutes > 0 && time.Seconds > 0)
+				{
+					humanTime.Append(", ");
+				}
+			}
 
-		public static string Humanize(int timeCount, string timeType)
-		{
-			var humanTime = new StringBuilder();
-			if(timeCount > 1 )
+			if(time.Minutes != 0)
 			{
-				humanTime.Append(timeCount + " " + timeType + "s");
+				humanTime.AppendFormat("{0} {1}", time.Minutes, Pluralize("minute", time.Minutes));
+				if (time.Seconds > 0)
+				{
+					humanTime.Append(" and ");
+				}
 			}
-			else if (timeCount == 1)
+
+			if(time.Seconds != 0)
 			{
-				humanTime.Append(timeCount + " " + timeType);
+
+				humanTime.AppendFormat("{0} {1}", time.Seconds, Pluralize("second", time.Seconds));
 			}
-			else
-			{
-				humanTime.Append("");
-			}
+
 
 			return humanTime.ToString();
+			
 		}
+
+		public static string Pluralize(this string value, int count) => (count == 1) ? value : value + "s";
+		
 	}
 		
 }
+

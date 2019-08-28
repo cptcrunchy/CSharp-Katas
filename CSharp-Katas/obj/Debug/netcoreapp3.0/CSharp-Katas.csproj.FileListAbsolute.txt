@@ -1,4 +1,3 @@
-W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.csprojAssemblyReference.cache
 W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.csproj.CoreCompileInputs.cache
 W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.AssemblyInfoInputs.cache
 W:\Personal\CodeWars\CSharp-Katas\CSharp-Katas\obj\Debug\netcoreapp3.0\CSharp-Katas.AssemblyInfo.cs
